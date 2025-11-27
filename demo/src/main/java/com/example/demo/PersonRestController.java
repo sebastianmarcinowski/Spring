@@ -32,7 +32,7 @@ public class PersonRestController {
     @PostMapping
     public ResponseEntity<Person> addPerson(@RequestBody Person person) {
         if (person.getFirstName() == null || person.getFirstName().isBlank() ||
-                person.getLastName() == null || person.getLastName().isBlank()) {
+                person.getFamilyName() == null || person.getFamilyName().isBlank()) {
             return ResponseEntity.badRequest().build();
         }
         try {
@@ -46,7 +46,7 @@ public class PersonRestController {
     @PutMapping("/{index}")
     public ResponseEntity<Person> updatePerson(@PathVariable int index, @RequestBody Person person) {
         if (person.getFirstName() == null || person.getFirstName().isBlank() ||
-                person.getLastName() == null || person.getLastName().isBlank()) {
+                person.getFamilyName() == null || person.getFamilyName().isBlank()) {
             return ResponseEntity.badRequest().build();
         }
         boolean updated = personService.setPerson(index, person);
